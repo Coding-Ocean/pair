@@ -10,16 +10,8 @@ ostream& operator<<(ostream& s, const pair<T1, T2>& pair) {
 	return s << pair.first << ":" << pair.second;
 }
 
-template<class C>
-void show(const C& data) {
-	for (const auto& d : data)
-		cout << d << endl;
-	cout << endl;
-}
-
 int main() 
 {
-#if 1
 	//pair構造体テンプレート
 	pair<string, int> pair1{"黒柳徹子", 90};
 	
@@ -51,23 +43,6 @@ int main()
 		auto [name, age] = pair1;
 		cout << name << ";" << age << endl;
 	}
-	cout << endl;
-#else
-
-	//pairのvector配列
-	vector<pair<string, int>> vec;
-	vec.emplace_back("AKB", 48);
-	vec.emplace_back("NMB", 48);
-	vec.emplace_back("HKT", 48);
-	show(vec);
-
-	//pairのlist
-	list<pair<string, int>> list;
-	list.emplace_back("乃木坂", 46);
-	list.emplace_back("櫻坂", 46);
-	list.emplace_back("日向坂", 46);
-	show(list);
-#endif
 
 	system("pause>0");
 }
