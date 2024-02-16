@@ -1,4 +1,5 @@
 #include<iostream>
+#include<utility>
 #include<tuple>
 #include<vector>
 #include<list>
@@ -20,33 +21,38 @@ int main()
 {
 #if 1
 	//pair構造体テンプレート
-	//名前と年齢のペアの場合
 	pair<string, int> pair1{"黒柳徹子", 90};
 	
-	//	上記の記述で以下のような構造体が用意される
-	//	struct pair {
-	//		string first;
-	//		int second;
-	//	}pair1{ "黒柳徹子", 90};
-	
-	//メンバ first, second
-	cout << pair1.first << ":" << pair1.second << endl;
-#else
-	
-	//std::tieで紐づけ
-	string name;
-	int age;
-	tie(name, age) = pair1;
-	cout << name << ";" << age << endl;
-	
-	//<<のオーバーロードで可能になる表示
-	cout << pair1 << endl;
-	cout << endl;
+	/*
+	上記の記述で以下のような構造体が用意される
+	struct pair {
+		string first;
+		int second;
+	}pair1{ "黒柳徹子", 90};
+	*/
 
-	//int,stringのペア
-	pair<int, string> pair2{ 2024, "パリ五輪" };
-	cout << pair2 << endl;
+	{
+		//メンバ first, second
+		cout << pair1.first << ":" << pair1.second << endl;
+	}
+	{
+		// <<のオーバーロードで可能になるpairの表示
+		cout << pair1 << endl;
+	}
+	{
+		//std::tieで紐づけ
+		string name;
+		int age;
+		tie(name, age) = pair1;
+		cout << name << ";" << age << endl;
+	}
+	{
+		//C++17 構造化拘束
+		auto [name, age] = pair1;
+		cout << name << ";" << age << endl;
+	}
 	cout << endl;
+#else
 
 	//pairのvector配列
 	vector<pair<string, int>> vec;
