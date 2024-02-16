@@ -1,8 +1,6 @@
 #include<iostream>
 #include<utility>
 #include<tuple>
-#include<vector>
-#include<list>
 using namespace std;
 
 template<typename T1, typename T2>
